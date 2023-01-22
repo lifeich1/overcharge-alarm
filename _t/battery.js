@@ -17,7 +17,7 @@ async function battery_status(cancel) {
 }
 
 async function is_battery_full(cancel) {
-    let s = battery_status(cancel);
+    let s = await battery_status(cancel);
     return s == 'Full';
 }
 

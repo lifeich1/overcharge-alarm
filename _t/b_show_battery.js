@@ -14,7 +14,7 @@ async function show() {
     try {
         let s = await Battery.battery_status(null);
         let flag = await Battery.is_battery_full(null);
-        print('battery status:', s);
+        print('battery status: "' + s + '"');
         print('is full:', flag);
     } catch(e) {
         printerr(e);
