@@ -21,5 +21,7 @@ async function is_battery_full(cancel) {
     return s == 'Full';
 }
 
-
-export { is_battery_full, battery_status }
+var Battery = {
+    battery_status: battery_status,
+    is_battery_full: is_battery_full
+};
