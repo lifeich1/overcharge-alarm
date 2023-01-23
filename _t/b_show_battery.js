@@ -6,7 +6,6 @@ const { GLib, Gio } = imports.gi;
 const { Battery } = imports.battery;
 
 const decoder = new TextDecoder('utf-8');
-Gio._promisify(Gio.File.prototype, 'load_contents_async', 'load_contents_finish');
 
 const loop = new GLib.MainLoop(null, false);
 
