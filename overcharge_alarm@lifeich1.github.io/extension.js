@@ -21,14 +21,21 @@
 
 const GETTEXT_DOMAIN = 'my-indicator-extension';
 
-const { GObject, St } = imports.gi;
+const { GObject, St, GLib } = imports.gi;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Main = imports.ui.main;
 const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
 
+const { Battery } = imports.mods.battery;
+
 const _ = ExtensionUtils.gettext;
+
+function _do_alarm() {
+    Main.notify(_('Warning: battery overcharge'));
+    GLib.spawn_command_line_async('aplay /tmp/tell-overcharge.wav');
+}
 
 const Indicator = GObject.registerClass(
 class Indicator extends PanelMenu.Button {
@@ -42,7 +49,7 @@ class Indicator extends PanelMenu.Button {
 
         let item = new PopupMenu.PopupMenuItem(_('Show Notification'));
         item.connect('activate', () => {
-            Main.notify(_('Whatʼs up, folks?'));
+            _do_alarm();
         });
         this.menu.addMenuItem(item);
     }
