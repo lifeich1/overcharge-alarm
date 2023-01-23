@@ -1,0 +1,8 @@
+{
+  "name": "Overcharge Alarm",
+  "description": "Alarm when nootbook is overcharge",
+  "uuid": "overcharge_alarm@lifeich1.github.io",
+  "shell-version": [
+    "42"
+  ]
+}
