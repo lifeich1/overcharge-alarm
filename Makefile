@@ -3,12 +3,11 @@ U := overcharge_alarm@lifeich1.github.io
 
 S := extension.js \
 	 metadata.json \
-	 stylesheet.css \
-	 mods/battery.js
+	 stylesheet.css
 
 SFILE := $(patsubst %,$(U)/%,$(S))
 DFILE := $(patsubst %,$(D)/%,$(SFILE))
-DDIR := $(D)/$(U) $(D)/$(U)/mods
+DDIR := $(D)/$(U)
 
 .PHONY: all
 all: $(DFILE)
@@ -20,7 +19,7 @@ $(DFILE): $(D)/%: %
 $(DDIR):
 	mkdir -p $@
 
-PL_GEA := enable disable reset
+PL_GEA := enable disable reset uninstall
 .PHONY: $(PL_GEA)
 $(PL_GEA):
 	gnome-extensions $@ $(U)
